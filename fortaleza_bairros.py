@@ -1,9 +1,9 @@
+# Link de onde tirei os exemplos
+# https://stackoverflow.com/questions/40226189/bokeh-is-not-rendering-properly-multipolygon-islands-from-geojson
+# http://bokeh.pydata.org/en/0.11.1/docs/user_guide/geo.html
+
 from bokeh.io import show, output_notebook, output_file
-from bokeh.models import (
-    GeoJSONDataSource,
-    HoverTool,
-    LinearColorMapper
-)
+from bokeh.models import (GeoJSONDataSource,HoverTool,LinearColorMapper)
 from bokeh.plotting import figure
 from bokeh.palettes import Viridis6
 
@@ -20,21 +20,7 @@ p.grid.grid_line_color = None
 p.patches('xs', 'ys', fill_alpha=0.7, line_color='white', fill_color={'field': 'REGIONAL', 'transform': color_mapper}, line_width=0.5, source=geo_source)
 
 hover = p.select_one(HoverTool)
-# hover.point_policy = "follow_mouse"
 hover.tooltips = [("Bairro:", "@NOME"),("Regional:", "@REGIONAL")]
 
 output_file("fortaleza_bairros.html")
 show(p)
-
-# map_options = GMapOptions(lat=-3.7318616, lng=-38.5266704, map_type="roadmap", zoom=11)
-
-# p = gmap("AIzaSyDwd7ijPklG7RTlJh3WPTNXe6K6sbTHGiA", map_options, title="")
-
-# p.grid.grid_line_color = None
-# color_mapper = LogColorMapper(palette=palette)
-
-# p.patches('x', 'y', source=geo_source,
-#           fill_color={'field': 'rate', 'transform': color_mapper},
-#           fill_alpha=0.7, line_color="white", line_width=0.5)
-
-# show(p)
